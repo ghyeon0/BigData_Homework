@@ -4,7 +4,7 @@
 
 전체 레포지토리 링크: https://github.com/ghyeon0/BigData_Homework/tree/master/HW1
 
-혹시 보고서 형식이 많이 깨진다면 
+혹시 보고서 형식이 많이 깨진다면 https://github.com/ghyeon0/BigData_Homework/blob/master/HW1/hw1.md 를 참조 부탁드립니다.
 
 ##### 1. 알고리즘
 
