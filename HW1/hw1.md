@@ -2,6 +2,10 @@
 
 #### 20171701 정지현
 
+전체 레포지토리 링크: https://github.com/ghyeon0/BigData_Homework/tree/master/HW1
+
+혹시 보고서 형식이 많이 깨진다면 
+
 ##### 1. 알고리즘
 
 - 인코딩 구별
@@ -123,13 +127,13 @@ utf8.txt와 cp949.txt 파일은 '테스트 문장입니다.' 문장을 내용으
 python3 hw1.py utf8.txt
 ```
 
-![Screen Shot 2019-03-11 at 1.47.22 PM](/Users/ghyeon/Desktop/Screen Shot 2019-03-11 at 1.47.22 PM.png)
+![Screen Shot 2019-03-11 at 1.47.22 PM](./Screen Shot 2019-03-11 at 1.47.22 PM.png)
 
 ```bash
 python3 hw1.py cp949.txt
 ```
 
-![Screen Shot 2019-03-11 at 1.48.33 PM](/Users/ghyeon/Desktop/Screen Shot 2019-03-11 at 1.48.33 PM.png)
+![Screen Shot 2019-03-11 at 1.48.33 PM](./Screen Shot 2019-03-11 at 1.48.33 PM.png)
 
 
 
@@ -139,13 +143,13 @@ utf8_ipsum.txt와 cp949_ipsum.txt는 [한글입숨][http://hangul.thefron.me/] �
 python3 hw1.py utf8_ipsum.txt
 ```
 
-![Screen Shot 2019-03-11 at 1.51.32 PM](/Users/ghyeon/Desktop/Screen Shot 2019-03-11 at 1.51.32 PM.png)![Screen Shot 2019-03-11 at 1.51.37 PM](/Users/ghyeon/Desktop/Screen Shot 2019-03-11 at 1.51.37 PM.png)
+![Screen Shot 2019-03-11 at 1.51.32 PM](./Screen Shot 2019-03-11 at 1.51.32 PM.png)![Screen Shot 2019-03-11 at 1.51.37 PM](./Screen Shot 2019-03-11 at 1.51.37 PM.png)
 
 ```bash
 python3 hw1.py cp949_ipsum.txt
 ```
 
-![Screen Shot 2019-03-11 at 1.53.04 PM](/Users/ghyeon/Desktop/Screen Shot 2019-03-11 at 1.53.04 PM.png)![Screen Shot 2019-03-11 at 1.53.07 PM](/Users/ghyeon/Desktop/Screen Shot 2019-03-11 at 1.53.07 PM.png)
+![Screen Shot 2019-03-11 at 1.53.04 PM](./Screen Shot 2019-03-11 at 1.53.04 PM.png)![Screen Shot 2019-03-11 at 1.53.07 PM](./Screen Shot 2019-03-11 at 1.53.07 PM.png)
 
 
 
