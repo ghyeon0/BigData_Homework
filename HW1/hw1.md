@@ -85,11 +85,16 @@
       for i in range(25):
           for j in range(94):
               if hfreq[i][j]:
-                  print(bytes([i + 0xB0, j + 0xA1]).decode('cp949') + ":", hfreq[i][j])
-      print("KS 완성형")
+                  print(bytes([i + 0xB0, j + 0xA1]).decode('cp949') + ":", str(hfreq[i][j]) + "회")
+      print("인코딩: KS 완성형")
+  
+      for i in range(128):
+          if freq[i]:
+              print(chr(i), "ASCII NUM " + str(i) + ":", str(freq[i]) + "회")
   ```
 
-  - 전체 범위를 돌면서 하나라도 카운팅된 글자는 "안: 1" 과 같은 방식으로 출력한다.
+  - 전체 범위를 돌면서 하나라도 카운팅된 글자는 "안: 1회" 과 같은 방식으로 출력한다.
+  - 그 후에 아스키 문자에 해당되는 범위의 문자들의 빈도를 출력한다.
 
 - UTF-8 빈도 출력
 
@@ -103,11 +108,17 @@
               second = num >> 6 & 0b111111
               second = 0b10000000 | second
               third = num & 0b111111 | 0b10000000
-              print(bytes([first, second, third]).decode("utf-8") + ":", unifreq[i])
-      print("UTF-8")
+              print(bytes([first, second, third]).decode("utf-8") + ":", str(unifreq[i]) + "회")
+      print("인코딩: UTF-8")
+  
+      for i in range(128):
+          if freq[i]:
+              print(chr(i), "ASCII NUM " + str(i) + ":", str(freq[i]) + "회")
+  
   ```
 
   - 유니코드 한글 전체 범위를 돌면서 각 글자가 하나라도 카운팅 된 경우 utf-8 인코딩 방식과 같이 나눈 다음 "안: 1"과 같은 방식으로 출력한다.
+  - 그 후에 아스키 문자에 해당되는 범위의 문자들의 빈도를 출력한다.
 
 
 
@@ -127,15 +138,15 @@ utf8.txt와 cp949.txt 파일은 '테스트 문장입니다.' 문장을 내용으
 python3 hw1.py utf8.txt
 ```
 
-![Screen Shot 2019-03-11 at 1 47 22 PM](https://user-images.githubusercontent.com/13490996/54110015-9a03df80-4423-11e9-9008-5868ee58e5cb.png)
+![Screen Shot 2019-03-11 at 5 53 33 PM](https://user-images.githubusercontent.com/13490996/54111187-9aea4080-4426-11e9-9b03-a0ea76abc6af.png)
 
 ```bash
 python3 hw1.py cp949.txt
 ```
 
-![Screen Shot 2019-03-11 at 1 48 33 PM](https://user-images.githubusercontent.com/13490996/54110050-b43dbd80-4423-11e9-9d11-04957e473bfb.png)
+![Screen Shot 2019-03-11 at 5 54 21 PM](https://user-images.githubusercontent.com/13490996/54111230-b9e8d280-4426-11e9-9d5d-d2d3a3029bb5.png)
 
-
+---
 
 utf8_ipsum.txt와 cp949_ipsum.txt는 [한글입숨][http://hangul.thefron.me/] 을 통해 생성한 내용은 같고 인코딩이 다른 파일.
 
@@ -143,18 +154,18 @@ utf8_ipsum.txt와 cp949_ipsum.txt는 [한글입숨][http://hangul.thefron.me/] �
 python3 hw1.py utf8_ipsum.txt
 ```
 
-![Screen Shot 2019-03-11 at 1 51 32 PM](https://user-images.githubusercontent.com/13490996/54110092-d0415f00-4423-11e9-9a28-3a9bd8e57d91.png)
+![Screen Shot 2019-03-11 at 8 48 17 PM](https://user-images.githubusercontent.com/13490996/54121938-093afd00-443f-11e9-8630-9173e2b036ee.png)
 
-![Screen Shot 2019-03-11 at 1 51 37 PM](https://user-images.githubusercontent.com/13490996/54110362-902eac00-4424-11e9-967a-3412457e1b5a.png)
+![Screen Shot 2019-03-11 at 8 48 21 PM](https://user-images.githubusercontent.com/13490996/54121954-1526bf00-443f-11e9-985a-bccba950ede5.png)
 
 
 ```bash
 python3 hw1.py cp949_ipsum.txt
 ```
 
-![Screen Shot 2019-03-11 at 1 53 04 PM](https://user-images.githubusercontent.com/13490996/54110383-9b81d780-4424-11e9-9724-c914646b7f7f.png)
+![Screen Shot 2019-03-11 at 8 50 22 PM](https://user-images.githubusercontent.com/13490996/54122028-55863d00-443f-11e9-9e25-9820611b1e3a.png)
 
-![Screen Shot 2019-03-11 at 1 53 07 PM](https://user-images.githubusercontent.com/13490996/54110402-a6d50300-4424-11e9-9ea4-3aa6fd87652c.png)
+![Screen Shot 2019-03-11 at 8 50 25 PM](https://user-images.githubusercontent.com/13490996/54122060-63d45900-443f-11e9-8fd1-7beb256b7ede.png)
 
 
 
@@ -211,8 +222,12 @@ def ks_print():
     for i in range(25):
         for j in range(94):
             if hfreq[i][j]:
-                print(bytes([i + 0xB0, j + 0xA1]).decode('cp949') + ":", hfreq[i][j])
-    print("KS 완성형")
+                print(bytes([i + 0xB0, j + 0xA1]).decode('cp949') + ":", str(hfreq[i][j]) + "회")
+    print("인코딩: KS 완성형")
+
+    for i in range(128):
+        if freq[i]:
+            print(chr(i), "ASCII NUM " + str(i) + ":", str(freq[i]) + "회")
             
 
 # 파일이 UTF-8 인코딩인 경우
@@ -252,8 +267,12 @@ def utf8_print():
             second = num >> 6 & 0b111111
             second = 0b10000000 | second
             third = num & 0b111111 | 0b10000000
-            print(bytes([first, second, third]).decode("utf-8") + ":", unifreq[i])
-    print("UTF-8")
+            print(bytes([first, second, third]).decode("utf-8") + ":", str(unifreq[i]) + "회")
+    print("인코딩: UTF-8")
+
+    for i in range(128):
+        if freq[i]:
+            print(chr(i), "ASCII NUM " + str(i) + ":", str(freq[i]) + "회")
 
 
 def main(file_name):

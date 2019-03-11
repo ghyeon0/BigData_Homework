@@ -48,8 +48,12 @@ def ks_print():
     for i in range(25):
         for j in range(94):
             if hfreq[i][j]:
-                print(bytes([i + 0xB0, j + 0xA1]).decode('cp949') + ":", hfreq[i][j])
-    print("KS 완성형")
+                print(bytes([i + 0xB0, j + 0xA1]).decode('cp949') + ":", str(hfreq[i][j]) + "회")
+    print("인코딩: KS 완성형")
+
+    for i in range(128):
+        if freq[i]:
+            print(chr(i), "ASCII NUM " + str(i) + ":", str(freq[i]) + "회")
             
 
 # 파일이 UTF-8 인코딩인 경우
@@ -89,8 +93,12 @@ def utf8_print():
             second = num >> 6 & 0b111111
             second = 0b10000000 | second
             third = num & 0b111111 | 0b10000000
-            print(bytes([first, second, third]).decode("utf-8") + ":", unifreq[i])
-    print("UTF-8")
+            print(bytes([first, second, third]).decode("utf-8") + ":", str(unifreq[i]) + "회")
+    print("인코딩: UTF-8")
+
+    for i in range(128):
+        if freq[i]:
+            print(chr(i), "ASCII NUM " + str(i) + ":", str(freq[i]) + "회")
 
 
 def main(file_name):
