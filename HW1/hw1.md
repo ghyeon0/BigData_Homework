@@ -127,13 +127,13 @@ utf8.txt와 cp949.txt 파일은 '테스트 문장입니다.' 문장을 내용으
 python3 hw1.py utf8.txt
 ```
 
-![Screen Shot 2019-03-11 at 1.47.22 PM](./Screen Shot 2019-03-11 at 1.47.22 PM.png)
+![Screen Shot 2019-03-11 at 1 47 22 PM](https://user-images.githubusercontent.com/13490996/54110015-9a03df80-4423-11e9-9008-5868ee58e5cb.png)
 
 ```bash
 python3 hw1.py cp949.txt
 ```
 
-![Screen Shot 2019-03-11 at 1.48.33 PM](./Screen Shot 2019-03-11 at 1.48.33 PM.png)
+![Screen Shot 2019-03-11 at 1 48 33 PM](https://user-images.githubusercontent.com/13490996/54110050-b43dbd80-4423-11e9-9d11-04957e473bfb.png)
 
 
 
@@ -143,13 +143,18 @@ utf8_ipsum.txt와 cp949_ipsum.txt는 [한글입숨][http://hangul.thefron.me/] �
 python3 hw1.py utf8_ipsum.txt
 ```
 
-![Screen Shot 2019-03-11 at 1.51.32 PM](./Screen Shot 2019-03-11 at 1.51.32 PM.png)![Screen Shot 2019-03-11 at 1.51.37 PM](./Screen Shot 2019-03-11 at 1.51.37 PM.png)
+![Screen Shot 2019-03-11 at 1 51 32 PM](https://user-images.githubusercontent.com/13490996/54110092-d0415f00-4423-11e9-9a28-3a9bd8e57d91.png)
+
+![Screen Shot 2019-03-11 at 1 51 37 PM](https://user-images.githubusercontent.com/13490996/54110362-902eac00-4424-11e9-967a-3412457e1b5a.png)
+
 
 ```bash
 python3 hw1.py cp949_ipsum.txt
 ```
 
-![Screen Shot 2019-03-11 at 1.53.04 PM](./Screen Shot 2019-03-11 at 1.53.04 PM.png)![Screen Shot 2019-03-11 at 1.53.07 PM](./Screen Shot 2019-03-11 at 1.53.07 PM.png)
+![Screen Shot 2019-03-11 at 1 53 04 PM](https://user-images.githubusercontent.com/13490996/54110383-9b81d780-4424-11e9-9724-c914646b7f7f.png)
+
+![Screen Shot 2019-03-11 at 1 53 07 PM](https://user-images.githubusercontent.com/13490996/54110402-a6d50300-4424-11e9-9ea4-3aa6fd87652c.png)
 
 
 
