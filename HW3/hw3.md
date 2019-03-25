@@ -106,12 +106,10 @@ python3 hw3.py '컴퓨터가 고장나서 서비스센터에 갔는데, 아직 �
 ![Screen Shot 2019-03-24 at 2 20 10 PM](https://user-images.githubusercontent.com/13490996/54875313-0af1c100-4e40-11e9-9655-b72a5e46ee27.png)
 
 ```bash
-python3 hw3.py '그는 루머에 대해 사실이 아니라고 밝혔다.'
+python3 hw3.py '그는 루머에 대해 사실이 아니라고 밝혔다.' # 확률이 높은 몇 가지 단어를 합친 문장
 ```
 
 ![Screen Shot 2019-03-24 at 2 22 58 PM](https://user-images.githubusercontent.com/13490996/54875324-5c9a4b80-4e40-11e9-9b60-1250f85bcd59.png)
-
-- 확률이 높은 몇 단어를 포함한 문장의 결과
 
 ```bash
 python3 hw3.py '어제 저녁에는 친구와 만나서 치킨을 먹었다.'
@@ -119,7 +117,37 @@ python3 hw3.py '어제 저녁에는 친구와 만나서 치킨을 먹었다.'
 
 ![Screen Shot 2019-03-24 at 2 29 22 PM](https://user-images.githubusercontent.com/13490996/54875372-40e37500-4e41-11e9-937c-5ddb6e1c093e.png)
 
+```bash
+python3 hw3.py '나는 밥을 먹고 학교에 간다'
+```
 
+![Screen Shot 2019-03-25 at 5 02 52 PM](https://user-images.githubusercontent.com/13490996/54903727-ecfb8d80-4f1f-11e9-8b8f-2f5e88413fdb.png)
+
+```bash
+python3 hw3.py '나는 법을 먹고 학교에 간다'
+```
+
+![Screen Shot 2019-03-25 at 5 04 23 PM](https://user-images.githubusercontent.com/13490996/54903810-187e7800-4f20-11e9-84c5-f6eceeadc1a0.png)
+
+```bash
+python3 hw3.py '나는 밥을 묵고 학교에 간다'
+```
+
+![Screen Shot 2019-03-25 at 5 05 26 PM](https://user-images.githubusercontent.com/13490996/54903860-377d0a00-4f20-11e9-81d9-f3a693159bab.png)
+
+```bash
+python3 hw3.py '너는 밥을 먹고 학교에 간다'
+```
+
+![Screen Shot 2019-03-25 at 5 06 23 PM](https://user-images.githubusercontent.com/13490996/54903910-59768c80-4f20-11e9-821b-2adaef4930d9.png)
+
+```bash
+python3 hw3.py '너는 법을 묵고 학교에 산다'
+```
+
+![Screen Shot 2019-03-25 at 5 07 31 PM](https://user-images.githubusercontent.com/13490996/54903962-832fb380-4f20-11e9-972d-5501c1f52678.png)
+
+- Unigram 분석의 한계로 '밥을 먹고' 보다 '법을 먹고'의 확률이 더 높게 나오는 문제가 발생하였다.
 
 ##### 4. 아쉬웠던 점
 
