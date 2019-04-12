@@ -6,7 +6,7 @@ import random
 def parse_data_bigram(data):
     sample_data = "<Start> " + data + " <End>"
     sample_data = sample_data.replace("\n", " ").replace("\r", " ")
-    sample_data = sample_data.replace(".", ". <End> <Start> ").replace("!", "! <End> <Start> ").replace("?", "? <End> <Start> ")
+    sample_data = sample_data.replace(".", "<End> <Start> ").replace("!", "<End> <Start> ").replace("?", "<End> <Start> ")
     sample_data = re.sub('[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]`\'…》]', '', sample_data)
     sample_data = sample_data.split()
     parsed_data = []
@@ -21,7 +21,7 @@ def parse_data_bigram(data):
 def parse_data_trigram(data):
     sample_data = "<Start> <Start> " + data + " <End>"
     sample_data = sample_data.replace("\n", " ").replace("\r", " ")
-    sample_data = sample_data.replace(".", ". <End> <Start> <Start> ").replace("!", "! <End> <Start> <Start> ").replace("?", "? <End> <Start> <Start> ")
+    sample_data = sample_data.replace(".", "<End> <Start> <Start> ").replace("!", "<End> <Start> <Start> ").replace("?", "<End> <Start> <Start> ")
     sample_data = re.sub('[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]`\'…》]', '', sample_data)
     sample_data = sample_data.split()
     parsed_data = []
@@ -93,10 +93,10 @@ def generate_sentence_bigram(data, candidate_size=10):
             candidate = []
             for each in raw_candidate:
                 candidate.append(each[0])
-            if "<End>" in candidate:
-                token = "<End>"
-            else:
-                token = candidate[random.randint(0, min(candidate_size - 1, len(candidate) - 1))]
+            # if "<End>" in candidate:
+            #     token = "<End>"
+            # else:
+            token = candidate[random.randint(0, min(candidate_size - 1, len(candidate) - 1))]
             print(token)
             sentence += token + " "
             current_token = token
