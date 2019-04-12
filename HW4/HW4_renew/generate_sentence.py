@@ -89,7 +89,7 @@ def generate_sentence_bigram(data, candidate_size=10):
         current_token = "<Start>"
         sentence = ""
         while current_token != "<End>":
-            raw_candidate = sorted(probability_dic[current_token].items(), reverse=True, key=itemgetter(1))[:10]
+            raw_candidate = sorted(probability_dic[current_token].items(), reverse=True, key=itemgetter(1))[:candidate_size]
             candidate = []
             for each in raw_candidate:
                 candidate.append(each[0])
@@ -97,10 +97,10 @@ def generate_sentence_bigram(data, candidate_size=10):
                 token = "<End>"
             else:
                 token = candidate[random.randint(0, min(candidate_size - 1, len(candidate) - 1))]
-            print(token)
+            # print(token)
             sentence += token + " "
             current_token = token
-        print(sentence)
+        print(sentence[:-6])
             
 
 def generate_sentence_trigram(data, candidate_size=10):
