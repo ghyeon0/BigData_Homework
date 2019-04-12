@@ -70,7 +70,8 @@ def generate_sentence_trigram(data, candidate_size=10):
         for _ in range(10):
             current_token = "<Start> " + start_token[0]
             sentence = current_token + " "
-            while current_token != "<End>":
+            while "<End>" not in current_token:
+                print(current_token)
                 raw_candidate = sorted(probability_dic[current_token].items(), reverse=True, key=itemgetter(1))[:candidate_size]
                 candidate = []
                 for each in raw_candidate:
