@@ -89,7 +89,7 @@ def generate_sentence_bigram(data, candidate_size=10):
     for start_token in start_tokens:
         for _ in range(10):
             current_token = start_token
-            sentence = ""
+            sentence = start_token + " "
             while current_token != "<End>":
                 raw_candidate = sorted(probability_dic[current_token].items(), reverse=True, key=itemgetter(1))[:candidate_size]
                 candidate = []
