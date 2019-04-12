@@ -97,7 +97,7 @@ def generate_sentence_bigram(data, candidate_size=10):
                 candidate = []
                 for each in raw_candidate:
                     candidate.append(each[0])
-                if "<End>" in candidate:
+                if "<End>" in candidate[:3]:
                     token = "<End>"
                 else:
                     token = candidate[random.randint(0, min(candidate_size - 1, len(candidate) - 1))]
