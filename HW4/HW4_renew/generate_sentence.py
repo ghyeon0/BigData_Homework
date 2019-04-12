@@ -86,7 +86,9 @@ def generate_sentence_bigram(data, candidate_size=10):
     bigram_count, probability_dic = count_and_calc_probability_bigram(parsed_bigram_data)
     print("Bigram Probability Calculation Complete")
     start_tokens = sorted(probability_dic["<Start>"].items(), key=itemgetter(1), reverse=True)[:3]
+    f = open("./Bigram/sentence.txt", 'w', encoding="utf-8")
     for start_token in start_tokens:
+        f.write("Seed: " + start_token[0] + "\n")
         for _ in range(10):
             current_token = start_token[0]
             sentence = start_token[0] + " "
@@ -103,6 +105,9 @@ def generate_sentence_bigram(data, candidate_size=10):
                 sentence += token + " "
                 current_token = token
             print(sentence[:-6])
+            f.write(sentence[:-6] + "\n")
+        f.write("\n")
+    f.close()
             
 
 def generate_sentence_trigram(data, candidate_size=10):
