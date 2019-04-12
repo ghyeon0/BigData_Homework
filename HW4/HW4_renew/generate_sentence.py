@@ -6,7 +6,7 @@ import random
 def parse_data_bigram(data):
     sample_data = "<Start> " + data + " <End>"
     sample_data = sample_data.replace("\n", " ").replace("\r", " ")
-    sample_data = sample_data.replace(".", "<End> <Start> ").replace("!", "<End> <Start> ").replace("?", "<End> <Start> ")
+    sample_data = sample_data.replace(".", " <End> <Start> ").replace("!", " <End> <Start> ").replace("?", " <End> <Start> ")
     sample_data = re.sub('[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]`\'…》]', '', sample_data)
     sample_data = sample_data.split()
     parsed_data = []
