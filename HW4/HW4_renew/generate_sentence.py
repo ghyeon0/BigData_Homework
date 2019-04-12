@@ -94,6 +94,7 @@ def generate_sentence_bigram(data, candidate_size=10):
             print(candidate)
             print(token)
             sentence += token + " "
+            current_token = token
         print(sentence)
             
 
