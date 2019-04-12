@@ -71,24 +71,20 @@ def generate_sentence_trigram(data, candidate_size=10):
             current_token = "<Start> " + start_token[0]
             sentence = current_token + " "
             while "<End>" not in current_token:
-                try:
-                    print(current_token)
-                    raw_candidate = sorted(probability_dic[current_token].items(), reverse=True, key=itemgetter(1))[:candidate_size]
-                    candidate = []
-                    for each in raw_candidate:
-                        candidate.append(each[0])
-                    if "<End>" in candidate[:3]:
-                        token = "<End>"
-                    else:
-                        token = candidate[random.randint(0, min(candidate_size - 1, len(candidate) - 1))]
-                    # print(token)
-                    sentence += token + " "
-                    current_token = current_token.split()[1] + " " + token
-                except:
-                    current_token = "<Start> " + start_token[0]
-                    sentence = current_token + " "
+                print(current_token)
+                raw_candidate = sorted(probability_dic[current_token].items(), reverse=True, key=itemgetter(1))[:candidate_size]
+                candidate = []
+                for each in raw_candidate:
+                    candidate.append(each[0])
+                if "<End>" in candidate[:3]:
+                    token = "<End>"
+                else:
+                    token = candidate[random.randint(0, min(candidate_size - 1, len(candidate) - 1))]
+                # print(token)
+                sentence += token + " "
+                current_token = current_token.split()[1] + " " + token
             sentence = sentence[8:]
-            sentence = sentence[:-7]
+            sentence = sentence[:-6]
             print(sentence)
             sentences.append((sentence, calc_sentence_generation_probability_bigram(sentence, probability_dic)))
         sentences.sort(key=itemgetter(1), reverse=True)
