@@ -26,7 +26,7 @@ def calc_sentence_generation_probability_bigram(sentence, probability_dic):
     for i in range(len(sentence) - 2):
         temp_data = sentence[i] + " " + sentence[i + 1]
         next_data = sentence[i + 2]
-        # print(sentence[i], sentence[i + 1])
+        print(temp_data, next_data)
         total_probability *= probability_dic[temp_data][next_data]
     # print(total_probability)
     return total_probability
@@ -89,6 +89,7 @@ def generate_sentence_trigram(data, candidate_size=10):
                     sentence = current_token + " "
             sentence = sentence[8:]
             sentence = sentence[:-7]
+            print(sentence)
             sentences.append((sentence, calc_sentence_generation_probability_bigram(sentence, probability_dic)))
         sentences.sort(key=itemgetter(1), reverse=True)
         for each in sentences:
