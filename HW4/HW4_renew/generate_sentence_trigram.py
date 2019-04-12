@@ -6,7 +6,7 @@ import random
 def parse_data_trigram(data):
     sample_data = "<Start> <Start> " + data + " <End>"
     sample_data = sample_data.replace("\n", " ").replace("\r", " ")
-    sample_data = sample_data.replace(".", "<End> <Start> <Start> ").replace("!", "<End> <Start> <Start> ").replace("?", "<End> <Start> <Start> ")
+    sample_data = sample_data.replace(".", " <End> <Start> <Start> ").replace("!", " <End> <Start> <Start> ").replace("?", " <End> <Start> <Start> ")
     sample_data = re.sub('[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]`\'…》]', '', sample_data)
     sample_data = sample_data.split()
     parsed_data = []
