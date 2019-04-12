@@ -1,16 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import re
 import time
 import save_counts_wordcloud
-
-
-# In[2]:
-
+import generate_sentence
 
 class Ngram:
     def __init__(self, data):
@@ -70,12 +61,13 @@ class Ngram:
         self.parse_and_count()
         save_counts_wordcloud.save_counts_wordcloud(self.unigram_count, self.bigram_count, self.trigram_count)
         print("parse, count, wordcloud time:", time.time() - start)
+        del self.unigram_count
+        del self.bigram_count
+        del self.trigram_count
+        start = time.time()
+        generate_sentence.generate_sentence(self.data)
+        print("Generate sentence time:", time.time() - start)
         
-        
-
-
-# In[3]:
-
 
 if __name__ == "__main__":
     f = open("../KCCq28.txt", 'r', encoding="utf-8")
@@ -84,10 +76,3 @@ if __name__ == "__main__":
     ngram = Ngram(txt)
     ngram.main()
     del ngram
-
-
-# In[ ]:
-
-
-
-
