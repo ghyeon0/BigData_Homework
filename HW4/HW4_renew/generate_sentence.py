@@ -1,4 +1,6 @@
 import re
+from operator import itemgetter
+import random
 
 
 def parse_data_bigram(data):
@@ -78,12 +80,20 @@ def count_and_calc_probability_trigram(parsed_data):
     return count_dic, probability_dic
 
 
-def generate_sentence_bigram(data):
+def generate_sentence_bigram(data, candidate_size=10):
     parsed_bigram_data = parse_data_bigram(data)
     bigram_count, probability_dic = count_and_calc_probability_bigram(parsed_bigram_data)
+    for _ in range(10):
+        current_token = "<Start>"
+        sentence = ""
+        while current_token != "<End>":
+            candidate = sorted(probability_dic[current_token].items(), reverse=True, key=itemgetter(1))[:candidate_size]
+            token = candidate[random.randint(0, candidate_size - 1)]
+            sentence += token + " "
+        print(sentence)
+            
 
-
-def generate_sentence_trigram(data):
+def generate_sentence_trigram(data, candidate_size=10):
     parsed_trigram_data = parse_data_trigram(data)
     trigram_count, probability_dic = count_and_calc_probability_trigram(parsed_trigram_data)
 
