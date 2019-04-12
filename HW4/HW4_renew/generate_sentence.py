@@ -30,12 +30,42 @@ def parse_data_trigram(data):
 
     return parsed_data
 
+
+def count_and_calc_probability_bigram(parsed_data):
+    count_dic = {}
+    probability_dic = {}
+
+    for i, data in enumerate(parsed_data[:-1]):
+        if data not in count_dic:
+            count_dic[data] = 1
+            probability_dic[data] = {parsed_data[i + 1]: 1}
+        else:
+            count_dic[data] += 1
+            if parsed_data[i + 1] not in probability_dic[data]:
+                probability_dic[data][parsed_data[i + 1]] = 1
+            else:
+                probability_dic[data][parsed_data[i + 1]] += 1
+
+    for master_key in count_dic.keys():
+        for slave_key in probability_dic[master_key].keys():
+            probability_dic[master_key][slave_key] = probability_dic[master_key][slave_key] / count_dic[master_key]
+            print(master_key, slave_key, probability_dic[master_key][slave_key])
+
+    return count_dic, probability_dic
+
+
+def count_and_calc_probability_trigram(parsed_data):
+    pass
+
+
 def generate_sentence_bigram(data):
     parsed_bigram_data = parse_data_bigram(data)
+    bigram_count, probability_dic = count_and_calc_probability_bigram(parsed_bigram_data)
 
 
 def generate_sentence_trigram(data):
     parsed_trigram_data = parse_data_trigram(data)
+    trigram_count, probability_dic = count_and_calc_probability_trigram(parsed_trigram_data)
 
 
 def generate_sentence(data):
