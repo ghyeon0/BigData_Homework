@@ -82,13 +82,17 @@ def count_and_calc_probability_trigram(parsed_data):
 
 def generate_sentence_bigram(data, candidate_size=10):
     parsed_bigram_data = parse_data_bigram(data)
+    print("Data Parsing Complete")
     bigram_count, probability_dic = count_and_calc_probability_bigram(parsed_bigram_data)
+    print("Calculation Complete")
     for _ in range(10):
         current_token = "<Start>"
         sentence = ""
         while current_token != "<End>":
             candidate = sorted(probability_dic[current_token].items(), reverse=True, key=itemgetter(1))[:candidate_size]
             token = candidate[random.randint(0, candidate_size - 1)][0]
+            print(candidate)
+            print(token)
             sentence += token + " "
         print(sentence)
             
@@ -100,4 +104,4 @@ def generate_sentence_trigram(data, candidate_size=10):
 
 def generate_sentence(data):
     generate_sentence_bigram(data)
-    generate_sentence_trigram(data)
+    # generate_sentence_trigram(data)
