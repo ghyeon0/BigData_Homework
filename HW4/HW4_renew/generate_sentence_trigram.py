@@ -77,7 +77,7 @@ def generate_sentence_trigram(data, candidate_size=10):
                 for each in raw_candidate:
                     candidate.append(each[0])
                 if "<End>" in candidate[:3]:
-                    token = "<End>"
+                    token = " <End>"
                 else:
                     token = candidate[random.randint(0, min(candidate_size - 1, len(candidate) - 1))]
                 # print(token)
@@ -85,7 +85,7 @@ def generate_sentence_trigram(data, candidate_size=10):
                 current_token = current_token.split()[1] + " " + token
                 print(current_token)
             sentence = sentence[8:]
-            sentence = sentence[:-6]
+            sentence = sentence[:-7]
             print(sentence)
             sentences.append((sentence, calc_sentence_generation_probability_bigram(sentence, probability_dic)))
         sentences.sort(key=itemgetter(1), reverse=True)
