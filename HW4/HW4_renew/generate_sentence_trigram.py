@@ -80,10 +80,10 @@ def generate_sentence_trigram(data, candidate_size=10):
                     token = " <End>"
                 else:
                     token = candidate[random.randint(0, min(candidate_size - 1, len(candidate) - 1))]
-                # print(token)
+                print("Token:", token)
                 sentence += token + " "
                 current_token = current_token.split()[1] + " " + token
-                print(current_token)
+                print("Current:", current_token)
             sentence = sentence[8:]
             sentence = sentence[:-7]
             print(sentence)
