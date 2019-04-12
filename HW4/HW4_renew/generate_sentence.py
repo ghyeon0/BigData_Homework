@@ -116,8 +116,10 @@ def generate_sentence_bigram(data, candidate_size=10):
                 # print(token)
                 sentence += token + " "
                 current_token = token
-            sentences.append(sentence[:-6])
-        sentence.sort(key=lambda x: calc_sentence_generation_probability_bigram(x, probability_dic), reverse=True)
+            sentences.append((sentence[:-6], calc_sentence_generation_probability_bigram(sentence, probability_dic)))
+        sentences.sort(key=itemgetter(1), reverse=True)
+        for each in sentences:
+            print(each)
         f.write("\n")
     f.close()
             
