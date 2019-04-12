@@ -82,25 +82,27 @@ def count_and_calc_probability_trigram(parsed_data):
 
 def generate_sentence_bigram(data, candidate_size=10):
     parsed_bigram_data = parse_data_bigram(data)
-    print("Data Parsing Complete")
+    print("Bigram Data Parsing Complete")
     bigram_count, probability_dic = count_and_calc_probability_bigram(parsed_bigram_data)
-    print("Calculation Complete")
-    for _ in range(10):
-        current_token = "<Start>"
-        sentence = ""
-        while current_token != "<End>":
-            raw_candidate = sorted(probability_dic[current_token].items(), reverse=True, key=itemgetter(1))[:candidate_size]
-            candidate = []
-            for each in raw_candidate:
-                candidate.append(each[0])
-            if "<End>" in candidate:
-                token = "<End>"
-            else:
-                token = candidate[random.randint(0, min(candidate_size - 1, len(candidate) - 1))]
-            # print(token)
-            sentence += token + " "
-            current_token = token
-        print(sentence[:-6])
+    print("Bigram Probability Calculation Complete")
+    start_tokens = sorted(probability_dic["<Start>"].items(), key=itemgetter(1), reverse=True)[:3]
+    for start_token in start_tokens:
+        for _ in range(10):
+            current_token = start_token
+            sentence = ""
+            while current_token != "<End>":
+                raw_candidate = sorted(probability_dic[current_token].items(), reverse=True, key=itemgetter(1))[:candidate_size]
+                candidate = []
+                for each in raw_candidate:
+                    candidate.append(each[0])
+                if "<End>" in candidate:
+                    token = "<End>"
+                else:
+                    token = candidate[random.randint(0, min(candidate_size - 1, len(candidate) - 1))]
+                # print(token)
+                sentence += token + " "
+                current_token = token
+            print(sentence[:-6])
             
 
 def generate_sentence_trigram(data, candidate_size=10):
