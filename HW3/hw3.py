@@ -18,6 +18,7 @@ word_count = {}
 total_word_count = 0
 
 for each in sample_data:
+    print(each)
     if each not in word_count:
         word_count[each] = 1
     else:
