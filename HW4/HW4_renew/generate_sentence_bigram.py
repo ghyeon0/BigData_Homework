@@ -46,7 +46,7 @@ def calc_sentence_generation_probability_bigram(sentence, probability_dic):
     sentence = sentence.split()
     total_probability = 1
     for i in range(len(sentence) - 1):
-        print(sentence[i], sentence[i + 1])
+        # print(sentence[i], sentence[i + 1])
         total_probability *= probability_dic[sentence[i]][sentence[i + 1]]
     # print(total_probability)
     return total_probability

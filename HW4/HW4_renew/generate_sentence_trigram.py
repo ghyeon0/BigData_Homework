@@ -18,6 +18,20 @@ def parse_data_trigram(data):
     return parsed_data
 
 
+def calc_sentence_generation_probability_bigram(sentence, probability_dic):
+    # print(sentence)
+    sentence = "<Start> <Start> " + sentence + " <End>"
+    sentence = sentence.split()
+    total_probability = 1
+    for i in range(len(sentence) - 2):
+        temp_data = sentence[i] + " " + sentence[i + 1]
+        next_data = sentence[i + 2]
+        # print(sentence[i], sentence[i + 1])
+        total_probability *= probability_dic[temp_data][next_data]
+    # print(total_probability)
+    return total_probability
+
+
 def count_and_calc_probability_trigram(parsed_data):
     count_dic = {}
     probability_dic = {}
@@ -45,4 +59,34 @@ def count_and_calc_probability_trigram(parsed_data):
 
 def generate_sentence_trigram(data, candidate_size=10):
     parsed_trigram_data = parse_data_trigram(data)
+    print("Trigram Data Parsing Complete")
     trigram_count, probability_dic = count_and_calc_probability_trigram(parsed_trigram_data)
+    print("Trigram Probability Calculation Complete")
+    start_tokens = sorted(probability_dic["<Start> <Start>"].items(), key=itemgetter(1), reverse=True)[:3]
+    f = open("./Trigram/sentence.txt", 'w', encoding="utf-8")
+    for start_token in start_tokens:
+        f.write("Seed: " + start_token[0] + "\n")
+        sentences = []
+        for _ in range(10):
+            current_token = "<Start> " + start_token[0]
+            sentence = current_token + " "
+            while current_token != "<End>":
+                raw_candidate = sorted(probability_dic[current_token].items(), reverse=True, key=itemgetter(1))[:candidate_size]
+                candidate = []
+                for each in raw_candidate:
+                    candidate.append(each[0])
+                if "<End>" in candidate[:3]:
+                    token = "<End>"
+                else:
+                    token = candidate[random.randint(0, min(candidate_size - 1, len(candidate) - 1))]
+                # print(token)
+                sentence += token + " "
+                current_token = current_token.split()[1] + " " + token
+            sentence = sentence[8:]
+            sentence = sentence[:-7]
+            sentences.append((sentence, calc_sentence_generation_probability_bigram(sentence, probability_dic)))
+        sentences.sort(key=itemgetter(1), reverse=True)
+        for each in sentences:
+            f.write(each[0] + "\n")
+        f.write("\n")
+    f.close()
