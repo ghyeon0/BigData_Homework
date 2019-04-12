@@ -90,7 +90,7 @@ def generate_sentence_bigram(data, candidate_size=10):
         sentence = ""
         while current_token != "<End>":
             candidate = sorted(probability_dic[current_token].items(), reverse=True, key=itemgetter(1))
-            token = candidate[random.randint(0, min(candidate_size - 1, len(candidate) - 1)][0]
+            token = candidate[random.randint(0, min(candidate_size - 1, len(candidate) - 1))][0]
             print(candidate)
             print(token)
             sentence += token + " "
