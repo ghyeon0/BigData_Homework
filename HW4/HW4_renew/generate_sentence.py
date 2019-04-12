@@ -5,7 +5,7 @@ def parse_data_bigram(data):
     sample_data = "<Start> " + data + " <End>"
     sample_data = sample_data.replace("\n", " ").replace("\r", " ")
     sample_data = sample_data.replace(".", ". <End> <Start> ").replace("!", "! <End> <Start> ").replace("?", "? <End> <Start> ")
-    sample_data = re.sub('[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]\<\>`\'…》]', '', sample_data)
+    sample_data = re.sub('[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]`\'…》]', '', sample_data)
     sample_data = sample_data.split()
     parsed_data = []
 
@@ -20,7 +20,7 @@ def parse_data_trigram(data):
     sample_data = "<Start> <Start> " + data + " <End>"
     sample_data = sample_data.replace("\n", " ").replace("\r", " ")
     sample_data = sample_data.replace(".", ". <End> <Start> <Start> ").replace("!", "! <End> <Start> <Start> ").replace("?", "? <End> <Start> <Start> ")
-    sample_data = re.sub('[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]\<\>`\'…》]', '', sample_data)
+    sample_data = re.sub('[-=+,#/\?:^$.@*\"※~&%ㆍ!』\\‘|\(\)\[\]`\'…》]', '', sample_data)
     sample_data = sample_data.split()
     parsed_data = []
 
@@ -58,7 +58,7 @@ def count_and_calc_probability_trigram(parsed_data):
     probability_dic = {}
 
     for i, data in enumerate(parsed_data[:-2]):
-        temp_data = data + parsed_data[i + 1]
+        temp_data = data + " " + parsed_data[i + 1]
         next_data = parsed_data[i + 2]
         if temp_data not in count_dic:
             count_dic[temp_data] = 1
@@ -73,7 +73,7 @@ def count_and_calc_probability_trigram(parsed_data):
     for master_key in count_dic.keys():
         for slave_key in probability_dic[master_key].keys():
             probability_dic[master_key][slave_key] = probability_dic[master_key][slave_key] / count_dic[master_key]
-            print(master_key, slave_key, probability_dic[master_key][slave_key])
+            # print(master_key, slave_key, probability_dic[master_key][slave_key])
 
     return count_dic, probability_dic
 
