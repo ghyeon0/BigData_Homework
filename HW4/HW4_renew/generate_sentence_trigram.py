@@ -89,7 +89,7 @@ def generate_sentence_trigram(data, candidate_size=10):
             # print(sentence)
             sentences.append((sentence, calc_sentence_generation_probability_bigram(sentence, probability_dic)))
         sentences.sort(key=itemgetter(1), reverse=True)
-        for each in sentences:
-            f.write(each[0] + "\n")
-        f.write("\n")
+        for i, each in enumerate(sentences):
+            f.write(str(i) + ": " + each[0] + "\n\n")
+        f.write("\n\n")
     f.close()
