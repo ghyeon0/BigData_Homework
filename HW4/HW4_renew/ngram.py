@@ -57,13 +57,13 @@ class Ngram:
         return parsed_data
     
     def main(self):
-        # start = time.time()
-        # self.parse_and_count()
-        # save_counts_wordcloud.save_counts_wordcloud(self.unigram_count, self.bigram_count, self.trigram_count)
-        # print("parse, count, wordcloud time:", time.time() - start)
-        # del self.unigram_count
-        # del self.bigram_count
-        # del self.trigram_count
+        start = time.time()
+        self.parse_and_count()
+        save_counts_wordcloud.save_counts_wordcloud(self.unigram_count, self.bigram_count, self.trigram_count)
+        print("parse, count, wordcloud time:", time.time() - start)
+        del self.unigram_count
+        del self.bigram_count
+        del self.trigram_count
         start = time.time()
         generate_sentence.generate_sentence(self.data)
         print("Generate sentence time:", time.time() - start)
